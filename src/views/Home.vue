@@ -3,8 +3,6 @@
         <div class="home">
             This is the home content
         </div>
-        <button @click="hitButton">Do it</button>
-        <div v-text="number" />
     </div>
 </template>
 
@@ -18,17 +16,5 @@ export default {
     name: 'Home',
     data: () => ({
     }),
-    computed: {
-        number() {
-            return store.state.number
-        }
-    },
-    components: {
-    },
-    methods: {
-        hitButton() {
-            store.commit('increment')
-        },
-    },
 }
 </script>

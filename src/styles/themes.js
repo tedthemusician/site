@@ -4,7 +4,12 @@ const defaults = {
     'background-attachment': 'fixed',
     'font-family': 'Helvetica, Arial, sans-serif',
     'font-size': '1rem',
-    'text-align': 'center'
+    'text-align': 'center',
+}
+
+const crappyStyles = {
+    ...defaults,
+    'font-family': 'Times New Roman, sans-serif',
 }
 
 export default {
@@ -23,11 +28,16 @@ export default {
         },
     },
     nineties: {
-
+        global: {
+            ...crappyStyles,
+            'background': 'black',
+            'color': 'yellow',
+            'font-weight': 'bold',
+        },
     },
     greybeard: {
         global: {
-            ...defaults,
+            ...crappyStyles,
             background: 'white',
             color: 'black',
             'font-family': 'Times New Roman, sans-serif',

@@ -1,22 +1,28 @@
 <template>
     <div id="app" :style="rootStyle">
         <router-view/>
+        <Footer />
     </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 import themes from '@/styles/themes.js'
+
+import Footer from '@/components/Footer.vue'
 
 export default {
     data: () => ({
-        themes,
-        currentTheme: 'dark',
     }),
     computed: {
-        rootStyle() {
-            return this.themes[this.currentTheme].global
-        },
-    }
+        ...mapState({
+            rootStyle: state => themes[state.theme].global,
+        }),
+    },
+    components: {
+        Footer,
+    },
 }
 </script>
 
@@ -34,6 +40,14 @@ body {
     height: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+
+    width: 100%;
+    height: 2rem;
 }
 
 </style>
