@@ -1,27 +1,25 @@
 <template>
     <div id="app" :style="rootStyle">
         <router-view/>
-        <Footer />
+        <global-footer />
     </div>
 </template>
 
 <script>
 import { mapState } from 'vuex'
 
-import themes from '@/styles/themes.js'
-
-import Footer from '@/components/Footer.vue'
+import GlobalFooter from '@/components/GlobalFooter.vue'
 
 export default {
     data: () => ({
     }),
     computed: {
         ...mapState({
-            rootStyle: state => themes[state.theme].global,
+            rootStyle: state => state.theme.global,
         }),
     },
     components: {
-        Footer,
+        GlobalFooter,
     },
 }
 </script>
