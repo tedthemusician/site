@@ -1,8 +1,9 @@
 <template>
     <div id="container">
         <home-header />
-        <sine-logo width="12rem" v-if="doShowLogo" />
+        <sine-logo width="12rem" v-if="theme !== 'greybeard'" />
         <div id="links">
+            <animated-gifs v-if="theme === 'vintage'" />
             <div id="showcases">
                 <router-link to="/developer">developer</router-link>
                 |
@@ -18,12 +19,14 @@
 <script>
 import { mapState } from 'vuex'
 
+import AnimatedGifs from '@/components/AnimatedGifs.vue'
 import HomeHeader from '@/components/HomeHeader.vue'
 import SineLogo from '@/components/SineLogo.vue'
 
 export default {
     name: 'Home',
     components: {
+        AnimatedGifs,
         HomeHeader,
         SineLogo,
     },
@@ -33,9 +36,6 @@ export default {
         ]),
         whoamiStyle() {
             return this.$store.getters.getStyle('home', 'whoami')
-        },
-        doShowLogo() {
-            return this.theme !== 'greybeard'
         },
     },
 }

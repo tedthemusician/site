@@ -28,6 +28,7 @@ export default {
 }
 
 #marquee {
+    margin: 0 auto;
     width: 90%;
     white-space: nowrap;
     overflow: hidden;
