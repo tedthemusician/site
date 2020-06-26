@@ -34,11 +34,9 @@
 </template>
 
 <script>
-import store from '@/store/index.js'
 import { mapState } from 'vuex'
 
 export default {
-	store,
 	computed: mapState({
 		styles: state => state.theme.sine,
 	}),

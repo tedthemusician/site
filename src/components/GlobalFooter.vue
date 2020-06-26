@@ -11,13 +11,9 @@
 </template>
 
 <script>
-import { mapMutations } from 'vuex'
-
-import store from '@/store/index.js'
-import { mapState } from 'vuex'
+import { mapState, mapMutations } from 'vuex'
 
 export default {
-    store,
     computed: mapState({
         footerStyle: state => state.theme.soft,
     }),

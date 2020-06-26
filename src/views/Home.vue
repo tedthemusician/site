@@ -9,12 +9,9 @@
 </template>
 
 <script>
-import store from '@/store/index.js'
-
 import SineLogo from '@/components/SineLogo.vue'
 
 export default {
-    store,
     name: 'Home',
     components: {
         SineLogo,
