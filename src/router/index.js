@@ -3,6 +3,7 @@ import VueRouter from 'vue-router'
 import Home from '@/views/Home.vue'
 import Musician from '@/views/Musician.vue'
 import Developer from '@/views/Developer.vue'
+import Whoami from '@/views/Whoami.vue'
 
 Vue.use(VueRouter)
 
@@ -21,6 +22,11 @@ const routes = [
         path: '/developer',
         name: 'Developer',
         component: Developer,
+    },
+    {
+        path: '/whoami',
+        name: 'Whoami',
+        component: Whoami,
     },
 ]
 
