@@ -37,7 +37,7 @@
 export default {
 	computed: {
 		styles() {
-			return this.$store.getters.getStyle('sine')
+			return this.$store.getters.getStyle('home', 'logo')
 		},
 	},
 }

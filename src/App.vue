@@ -9,11 +9,24 @@
 import GlobalFooter from '@/components/GlobalFooter.vue'
 
 export default {
-    data: () => ({
-    }),
     computed: {
-        rootStyle() {
+        globalStyle() {
             return this.$store.getters.getStyle('global')
+        },
+        linkStyle() {
+            const rules = this.$store.getters.getStyle('link')
+            const { normal } = rules
+            return {
+                '--link-normal-color': normal.color,
+                '--link-outline': normal.outline,
+                '--link-text-decoration': normal['text-decoration'],
+            }
+        },
+        rootStyle() {
+            return {
+                ...this.globalStyle,
+                ...this.linkStyle,
+            }
         },
     },
     components: {
@@ -36,6 +49,12 @@ body {
     height: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+    color: var(--link-normal-color);
+    outline: var(--link-outline);
+    text-decoration: var(--link-text-decoration);
 }
 
 footer {
