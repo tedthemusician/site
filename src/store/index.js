@@ -7,18 +7,20 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
     state: {
-        number: 10,
         theme: themes.light,
     },
     mutations: {
-        increment(state) {
-            state.number++
-        },
         setTheme(state, theme) {
             state.theme = themes[theme]
         },
     },
     actions: {
+        setTheme({ commit }, theme) {
+            commit('setTheme', theme)
+        },
+    },
+    getters: {
+        getStyle: state => subTheme => state.theme[subTheme],
     },
     modules: {
     },

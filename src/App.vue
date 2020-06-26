@@ -6,17 +6,15 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 import GlobalFooter from '@/components/GlobalFooter.vue'
 
 export default {
     data: () => ({
     }),
     computed: {
-        ...mapState({
-            rootStyle: state => state.theme.global,
-        }),
+        rootStyle() {
+            return this.$store.getters.getStyle('global')
+        },
     },
     components: {
         GlobalFooter,

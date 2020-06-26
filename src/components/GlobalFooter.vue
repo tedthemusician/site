@@ -11,14 +11,16 @@
 </template>
 
 <script>
-import { mapState, mapMutations } from 'vuex'
+import { mapActions } from 'vuex'
 
 export default {
-    computed: mapState({
-        footerStyle: state => state.theme.soft,
-    }),
+    computed: {
+        footerStyle() {
+            return this.$store.getters.getStyle('soft') 
+        },
+    },
     methods: {
-        ...mapMutations([
+        ...mapActions([
             'setTheme',
         ]),
     },

@@ -34,11 +34,11 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
-	computed: mapState({
-		styles: state => state.theme.sine,
-	}),
+	computed: {
+		styles() {
+			return this.$store.getters.getStyle('sine')
+		},
+	},
 }
 </script>
