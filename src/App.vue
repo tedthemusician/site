@@ -6,7 +6,7 @@
 </template>
 
 <script>
-import GlobalFooter from '@/components/GlobalFooter.vue'
+import GlobalFooter from '@/components/app/GlobalFooter.vue'
 
 export default {
     computed: {

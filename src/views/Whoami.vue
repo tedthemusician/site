@@ -1,12 +1,16 @@
 <template>
     <main>
-        This is the whoami
+        <virtual-terminal />
     </main>
 </template>
 
 <script>
-export default {
+import VirtualTerminal from '@/components/whoami/VirtualTerminal.vue'
 
+export default {
+    components: {
+        VirtualTerminal,
+    },
 }
 </script>
 

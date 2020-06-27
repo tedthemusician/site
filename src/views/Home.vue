@@ -19,9 +19,9 @@
 <script>
 import { mapState } from 'vuex'
 
-import AnimatedGifs from '@/components/AnimatedGifs.vue'
-import HomeHeader from '@/components/HomeHeader.vue'
-import SineLogo from '@/components/SineLogo.vue'
+import AnimatedGifs from '@/components/home/AnimatedGifs.vue'
+import HomeHeader from '@/components/home/HomeHeader.vue'
+import SineLogo from '@/components/home/SineLogo.vue'
 
 export default {
     name: 'Home',
