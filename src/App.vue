@@ -11,10 +11,10 @@ import GlobalFooter from '@/components/app/GlobalFooter.vue'
 export default {
     computed: {
         globalStyle() {
-            return this.$store.getters.getStyle('global')
+            return this.$store.getters.getStyle('app', 'global')
         },
         linkStyle() {
-            const rules = this.$store.getters.getStyle('link')
+            const rules = this.$store.getters.getStyle('app', 'link')
             const { normal } = rules
             return {
                 '--link-normal-color': normal.color,

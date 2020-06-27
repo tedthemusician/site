@@ -5,8 +5,8 @@ import themes from '@/styles/themes.js'
 
 Vue.use(Vuex)
 
-function getNestedProperty(root, keys) {
-    return keys.reduce((obj, key) => obj[key], root)
+function getNestedProperty(...keys) {
+    return keys.reduce((obj, key) => obj[key], themes)
 }
 
 export default new Vuex.Store({
@@ -24,10 +24,8 @@ export default new Vuex.Store({
         },
     },
     getters: {
-        style: state => themes[state.theme],
-        getStyle: (state, getters) => (...subTheme) => {
-            const { style } = getters
-            return getNestedProperty(style, subTheme)
+        getStyle: state => (view, ...subTheme) => {
+            return getNestedProperty(view, state.theme, ...subTheme)
         },
     },
     modules: {
