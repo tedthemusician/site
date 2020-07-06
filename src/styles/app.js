@@ -1,7 +1,5 @@
 const defaults = {
     global: {
-        padding: '0.5rem',
-        
         color: '#311f5e',
 
         'background-attachment': 'fixed',
