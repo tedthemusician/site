@@ -10,8 +10,8 @@ const defaults = {
         margin: '0.5rem auto',
 
         'min-width': '4rem',
-        'max-width': '90%',
-        'min-height': '33rem',
+        'max-width': '97%',
+        'min-height': '34rem',
 
         background: '#f6f6e3',
         'border-radius': windowBorderRadius,
@@ -33,16 +33,19 @@ const defaults = {
         color: '#ccc',
         'vertical-align': 'middle',
     },
-    content: {
+    screen: {
         padding: '0.2rem 0.4rem 0.4rem 0.4rem',
-        
+    },
+    pre: {
+        margin: 0,
+
         color: '#657b83',
 
-        'font-family': 'Courier New, monospace',
-        'font-size': '0.7rem',
-        'font-weight': 'bold',
-
+        'white-space': 'pre-wrap',
         'text-align': 'left',
+        'font-family': 'Courier New, monospace',
+        'font-size': '0.8rem',
+        'font-weight': 'bold',
     },
 }
 

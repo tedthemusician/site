@@ -1,0 +1,14 @@
+$ whoami
+ted
+$ whoami -v
+
++------------------------+
+|       TED OLIVER       |
+| developer and musician |
++------------------------+
+
+Ted Oliver is a software developer from Raleigh, North Carolina. He works at <a href="http://corestudycast.com" target="_blank">Core Sound Imagining, Inc.</a>, and is the main developer of their proprietary web-based <a href="viewer.png" target="_blank">medical image viewer</a>. He is fluent in JavaScript (including React), PHP, and Python. At home, he has explored Haskell and Clojure in depth, and he has dabbled in other languages for fun. He built this website with VueJS.
+
+Ted is also a composer and songwriter, holding a Bachelor of Music degree from the North Carolina School of the Arts and a Master of Music degree from the University of Kansas. He has written several ensemble pieces on commission, and he espeically enjoys creating electronic music. He is an experienced Max/MSP user, which, incidentally, sparked his initial interest in programming.
+
+In his spare time, Ted enjoys participating in programming challenges like Project Euler and Advent of Code, writing and playing music, and playing chess.
