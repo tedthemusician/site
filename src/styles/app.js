@@ -34,6 +34,13 @@ const light = {
         ...defaults.global,
         background: 'linear-gradient(rgb(295, 199, 225), #e8dfee 60vh)',
     },
+    navBar: {
+        width: '100%',
+        height: '2rem',
+        background: '#9593ce',
+        'box-shadow': '0 0 0.3rem gray',
+    },
+
     soft: {
         color: '#9d8aa8',
     },
@@ -50,6 +57,11 @@ export default {
         },
         soft: {
             color: 'rgb(85, 73, 88)',
+        },
+        navBar: {
+            ...light.navBar,
+            background: '#344250',
+            'box-shadow': 'none',
         },
     },
     vintage: {

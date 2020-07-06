@@ -1,17 +1,16 @@
 <template>
-    <nav />
+    <nav :style="barStyle" />
 </template>
 
 <script>
 export default {
-
+    computed: {
+        barStyle() {
+            return this.$store.getters.getStyle('app', 'navBar')
+        },
+    },
 }
 </script>
 
 <style>
-nav {
-    background: red;
-    width: 100%;
-    height: 2rem;
-}
 </style>
