@@ -10,10 +10,10 @@
 export default {
     computed: {
         notesSrc() {
-            return require('@/assets/img/notes.gif')
+            return require('@/assets/home/notes.gif')
         },
         computerSrc() {
-            return require('@/assets/img/computer.gif')
+            return require('@/assets/home/computer.gif')
         },
     },
 }
