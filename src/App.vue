@@ -1,11 +1,13 @@
 <template>
     <div id="app" :style="rootStyle">
+        <nav-bar />
         <router-view/>
         <global-footer />
     </div>
 </template>
 
 <script>
+import NavBar from '@/components/app/NavBar.vue'
 import GlobalFooter from '@/components/app/GlobalFooter.vue'
 
 export default {
@@ -30,6 +32,7 @@ export default {
         },
     },
     components: {
+        NavBar,
         GlobalFooter,
     },
 }
