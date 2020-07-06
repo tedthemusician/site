@@ -11,7 +11,7 @@ const defaults = {
 
         'min-width': '4rem',
         'max-width': '90%',
-        'min-height': '4rem',
+        'min-height': '33rem',
 
         background: '#f6f6e3',
         'border-radius': windowBorderRadius,
