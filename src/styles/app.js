@@ -34,11 +34,20 @@ const light = {
         ...defaults.global,
         background: 'linear-gradient(rgb(295, 199, 225), #e8dfee 60vh)',
     },
+
     navBar: {
+        display: 'flex',
+        'justify-content': 'left',
         width: '100%',
         height: '2rem',
         background: '#9593ce',
         'box-shadow': '0 0 0.3rem gray',
+    },
+    
+    navButton: {
+        padding: '0.2rem',
+        width: '1.2rem',
+        fill: '#cce',
     },
 
     soft: {
@@ -63,6 +72,10 @@ export default {
             background: '#344250',
             'box-shadow': 'none',
         },
+        navButton: {
+            ...light.navButton,
+            fill: '#788',
+        },
     },
     vintage: {
         ...light,
@@ -76,6 +89,15 @@ export default {
         soft: {
             color: 'purple',
         },
+        navBar: {
+            ...light.navBar,
+            background: '#222',
+            'box-shadow': 'none',
+        },
+        navButton: {
+            ...light.navButton,
+            fill: '#080',
+        },
     },
     greybeard: {
         ...light,
@@ -86,6 +108,15 @@ export default {
             color: 'black',
             'font-family': 'Times New Roman, sans-serif',
             'text-align': 'left',
+        },
+        navBar: {
+            ...light.navBar,
+            background: 'white',
+            'box-shadow': 'none',
+        },
+        navButton: {
+            ...light.navButton,
+            fill: 'black',
         },
     },
 }
