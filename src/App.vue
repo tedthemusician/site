@@ -1,7 +1,7 @@
 <template>
     <div id="app" :style="rootStyle">
-        <nav-bar />
-        <router-view/>
+        <nav-bar v-show="this.$route.path !== '/'" />
+        <router-view id="router-view" />
         <global-footer />
     </div>
 </template>
@@ -52,6 +52,10 @@ body {
     height: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+#router-view {
+    padding: 0.5rem;
 }
 
 a {
