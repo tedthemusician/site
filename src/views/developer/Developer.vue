@@ -1,10 +1,14 @@
 <template>
     <main>
-        <div v-for="project in projects" :key="project.id">
-            <router-link to="">
-                <h2 v-text="project.name" />
+        <div
+            :style="projectStyle"
+            v-for="project in projects"
+            :key="project.id"
+        >
+            <router-link :to="project.path">
+                <h2 :style="nameStyle" v-text="project.name" />
             </router-link>
-            <p v-text="project.comment" />
+            <summary :style="descStyle" v-text="project.desc" />
         </div>
     </main>
 </template>
@@ -14,39 +18,58 @@ const projects = [
     {
         id: 'pangram',
         name: 'Pangram finder',
-        comment: 'A tool for finding new pangrams',
+        desc: 'A tool for finding new pangrams',
     },
     {
         id: 'dvd',
         name: 'Evil DVD Screensaver',
-        comment: 'A DVD screensaver whose icon never quite hits the corner',
+        desc: 'A DVD screensaver whose icon never quite hits the corner',
     },
     {
         id: 'mystify',
         name: 'Mystify Your Mind',
-        comment: 'A bit of Windows 95 nostalgia',
+        desc: 'A bit of Windows 95 nostalgia',
     },
     {
         id: 'deepnote',
         name: 'Deep Note',
-        comment: 'A visualization of a familiar sound',
+        desc: 'A visualization of a familiar sound',
     },
     {
         id: 'life',
         name: 'Life',
-        comment: "Conway's Game of Life",
+        desc: "Conway's Game of Life",
     },
     {
         id: 'julia',
         name: 'Julia Sets',
-        comment: 'A Julia Set manipulator',
+        desc: 'Explore Julia sets by changing function constants',
     },
 ]
 
 export default {
     data: () => ({
-        projects,
+        projects: projects.map(project => ({
+            ...project,
+            path: `/developer/${project.id}`,
+        })),
     }),
+    computed: {
+        projectStyle() {
+            return this.getProjectStyle('project')
+        },
+        nameStyle() {
+            return this.getProjectStyle('name')
+        },
+        descStyle() {
+            return this.getProjectStyle('desc')
+        },
+    },
+    methods: {
+        getProjectStyle(element) {
+            return this.$store.getters.getStyle('developer', element)
+        },
+    },
 }
 </script>
 

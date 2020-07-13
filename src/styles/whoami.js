@@ -50,6 +50,7 @@ const defaults = {
 }
 
 const darkStyles = {
+    ...defaults,
     window: {
         ...defaults.window,
         'background': '#002b36',
@@ -58,21 +59,9 @@ const darkStyles = {
     },
 }
 
-const crappyStyles = {
-    ...defaults,
-}
-
 export default {
     light: defaults,
-    dark: {
-        ...defaults,
-        ...darkStyles,
-    },
-    vintage: {
-        ...crappyStyles,
-        ...darkStyles,
-    },
-    greybeard: {
-        ...crappyStyles,
-    },
+    dark: darkStyles,
+    vintage: darkStyles,
+    greybeard: defaults,
 }
