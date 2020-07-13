@@ -49,6 +49,15 @@ const defaults = {
     },
 }
 
+const darkStyles = {
+    window: {
+        ...defaults.window,
+        'background': '#002b36',
+        'color': '#839496',
+        'box-shadow': '0 0 0.3rem #111',
+    },
+}
+
 const crappyStyles = {
     ...defaults,
 }
@@ -57,15 +66,11 @@ export default {
     light: defaults,
     dark: {
         ...defaults,
-        window: {
-            ...defaults.window,
-            'background': '#002b36',
-            'color': '#839496',
-            'box-shadow': '0 0 0.3rem #111',
-        },
+        ...darkStyles,
     },
     vintage: {
         ...crappyStyles,
+        ...darkStyles,
     },
     greybeard: {
         ...crappyStyles,
