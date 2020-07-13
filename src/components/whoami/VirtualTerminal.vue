@@ -46,22 +46,25 @@ export default {
     }),
     computed: {
         windowStyle() {
-            return this.$store.getters.getStyle('whoami', 'window')
+            return this.getElementStyle('window')
         },
         titleBarStyle() {
-            return this.$store.getters.getStyle('whoami', 'titleBar')
+            return this.getElementStyle('titleBar')
         },
         screenStyle() {
-            return this.$store.getters.getStyle('whoami', 'screen')
+            return this.getElementStyle('screen')
         },
         preStyle() {
-            return this.$store.getters.getStyle('whoami', 'pre')
+            return this.getElementStyle('pre')
         },
         content() {
             return `${this.text}&#10074;`
         },
     },
     methods: {
+        getElementStyle(element) {
+            return this.$store.getters.getStyle('whoami', element)
+        },
         displayNext(remainingCommands) {
             this.text += prompt
             if (remainingCommands.length) {
