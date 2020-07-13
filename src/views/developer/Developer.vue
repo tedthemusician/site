@@ -1,9 +1,9 @@
 <template>
     <main>
         <div v-for="project in projects" :key="project.id">
-            <a>
+            <router-link to="">
                 <h2 v-text="project.name" />
-            </a>
+            </router-link>
             <p v-text="project.comment" />
         </div>
     </main>

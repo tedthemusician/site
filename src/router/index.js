@@ -1,8 +1,8 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '@/views/Home.vue'
-import Musician from '@/views/Musician.vue'
-import Developer from '@/views/Developer.vue'
+import Musician from '@/views/musician/Musician.vue'
+import Developer from '@/views/developer/Developer.vue'
 import Whoami from '@/views/Whoami.vue'
 
 Vue.use(VueRouter)
