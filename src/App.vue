@@ -49,12 +49,15 @@ body {
 }
 
 #app {
+    display: flex;
+    flex-direction: column;
     height: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
 
 #router-view {
+    flex: auto;
     padding: 0.5rem;
 }
 
@@ -65,8 +68,7 @@ a {
 }
 
 footer {
-    position: fixed;
-    bottom: 0;
+    margin-top: auto;
 
     width: 100%;
     height: 2rem;
