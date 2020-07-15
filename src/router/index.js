@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Developer from '@/views/developer/Developer.vue'
+import DVD from '@/views/developer/DVD.vue'
 import Home from '@/views/Home.vue'
 import Musician from '@/views/musician/Musician.vue'
 import Pangram from '@/views/developer/Pangram.vue'
@@ -29,6 +30,11 @@ const routes = [
         path: '/developer/pangram',
         name: 'Pangram',
         component: Pangram,
+    },
+    {
+        path: '/developer/dvd',
+        name: 'DVD Menu',
+        component: DVD,
     },
     {
         path: '/whoami',

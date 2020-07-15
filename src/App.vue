@@ -1,7 +1,7 @@
 <template>
     <div id="app" :style="rootStyle">
-        <nav-bar v-show="this.$route.path !== '/'" />
-        <router-view id="router-view" />
+        <nav-bar v-show="!isRootRoute" />
+        <router-view id="router-view" :style="routerViewStyle" />
         <global-footer />
     </div>
 </template>
@@ -11,12 +11,19 @@ import NavBar from '@/components/app/NavBar.vue'
 import GlobalFooter from '@/components/app/GlobalFooter.vue'
 
 export default {
+    components: {
+        NavBar,
+        GlobalFooter,
+    },
     computed: {
+        isRootRoute() {
+            return this.$route.path === '/'
+        },
         globalStyle() {
-            return this.$store.getters.getStyle('app', 'global')
+            return this.getStyle('app', 'global')
         },
         linkStyle() {
-            const rules = this.$store.getters.getStyle('app', 'link')
+            const rules = this.getStyle('app', 'link')
             const { normal } = rules
             return {
                 '--link-normal-color': normal.color,
@@ -30,10 +37,24 @@ export default {
                 ...this.linkStyle,
             }
         },
+        routerViewStyle() {
+            return {
+                'margin-top': this.isRootRoute ? 'none' : '2rem',
+            }
+        },
     },
-    components: {
-        NavBar,
-        GlobalFooter,
+    methods: {
+        getStyle(...keys) {
+            return this.$store.getters.getStyle(...keys)
+        },
+        setBodyBackground() {
+            const background = this.getStyle('app', 'body', 'background')
+            document.body.style.background = background
+        },
+    },
+    mounted() {
+        this.$root.$on('set-theme', this.setBodyBackground)
+        this.setBodyBackground()
     },
 }
 </script>
@@ -45,13 +66,9 @@ html {
 
 body {
     margin: 0;
-    height: 100%;
 }
 
 #app {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
@@ -66,12 +83,4 @@ a {
     outline: var(--link-outline);
     text-decoration: var(--link-text-decoration);
 }
-
-footer {
-    margin-top: auto;
-
-    width: 100%;
-    height: 2rem;
-}
-
 </style>

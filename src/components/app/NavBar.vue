@@ -39,6 +39,11 @@ export default {
 </script>
 
 <style scoped>
+nav {
+    position: fixed;
+    top: 0;
+}
+
 a {
     margin: 0.5rem;
     color: blue;

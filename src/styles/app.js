@@ -1,8 +1,8 @@
+const navBarHeight = '2rem'
+
 const defaults = {
     global: {
         color: '#311f5e',
-
-        'background-attachment': 'fixed',
         'font-family': 'Helvetica, Arial, sans-serif',
         'font-size': '1rem',
         'text-align': 'center',
@@ -32,14 +32,18 @@ const light = {
     ...defaults,
     global: {
         ...defaults.global,
-        background: 'linear-gradient(rgb(295, 199, 225), #e8dfee 60vh)',
+    },
+
+    body: {
+        background: 'linear-gradient(rgb(295, 199, 225), #e8dfee 60vh) fixed',
     },
 
     navBar: {
+        position: 'fixed',
         display: 'flex',
         'justify-content': 'left',
         width: '100%',
-        height: '2rem',
+        height: navBarHeight,
         background: '#9593ce',
         'box-shadow': '0 0 0.3rem gray',
     },
@@ -61,8 +65,10 @@ export default {
         ...light,
         global: {
             ...defaults.global,
-            background: 'linear-gradient(rgb(49, 28, 51), rgb(31, 22, 37) 60vh)',
             color: 'rgb(192, 183, 195)',
+        },
+        body: {
+            background: 'linear-gradient(rgb(49, 28, 51), rgb(31, 22, 37) 60vh) fixed',
         },
         soft: {
             color: 'rgb(85, 73, 88)',
@@ -82,9 +88,11 @@ export default {
         ...crappyStyles,
         global: {
             ...crappyStyles.global,
-            'background': 'black',
             'color': 'yellow',
             'font-weight': 'bold',
+        },
+        body: {
+            'background': 'black',
         },
         soft: {
             color: 'purple',
@@ -104,10 +112,12 @@ export default {
         ...crappyStyles,
         global: {
             ...crappyStyles.global,
-            background: 'white',
             color: 'black',
             'font-family': 'Times New Roman, sans-serif',
             'text-align': 'left',
+        },
+        body: {
+            background: 'white',
         },
         navBar: {
             ...light.navBar,
