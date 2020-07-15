@@ -1,7 +1,7 @@
 <template>
-    <div id="container">
-        <home-header />
+    <main>
         <sine-logo width="12rem" v-if="theme !== 'greybeard'" />
+        <home-header />
         <div id="links">
             <animated-gifs v-if="theme === 'vintage'" />
             <div id="showcases">
@@ -13,7 +13,7 @@
             <router-link to="/whoami">whoami</router-link>
             </div>
         </div>
-    </div>
+    </main>
 </template>
 
 <script>
@@ -42,8 +42,13 @@ export default {
 </script>
 
 <style scoped>
+main {
+    margin-top: 2rem;
+}
+
 #links {
     margin-top: 1rem;
     font-size: 1.25rem;
+    user-select: none;
 }
 </style>
