@@ -57,8 +57,12 @@ export default {
 </script>
 
 <style scoped>
+main {
+    margin: 0 auto;
+}
 #box {
     width: 100%;
     height: 100%;
+    background: red;
 }
 </style>
