@@ -21,9 +21,7 @@ import { mapActions } from 'vuex'
 export default {
     computed: {
         footerStyle() {
-            return {
-                ...this.$store.getters.getStyle('app', 'soft'),
-            } 
+            return this.$store.getters.getStyle('app', 'footer')
         },
     },
     methods: {

@@ -57,6 +57,11 @@ const light = {
     soft: {
         color: '#9d8aa8',
     },
+
+    footer: {
+        background: '#858fa0',
+        color: '#d2d2de',
+    },
 }
 
 export default {
@@ -82,6 +87,10 @@ export default {
             ...light.navButton,
             fill: '#788',
         },
+        footer: {
+            background: '#2c2c38',
+            color: '#706b71',
+        },
     },
     vintage: {
         ...light,
@@ -106,6 +115,10 @@ export default {
             ...light.navButton,
             fill: '#080',
         },
+        footer: {
+            background: 'black',
+            color: 'purple',
+        },
     },
     greybeard: {
         ...light,
@@ -127,6 +140,10 @@ export default {
         navButton: {
             ...light.navButton,
             fill: 'black',
+        },
+        footer: {
+            background: 'white',
+            color: 'black',
         },
     },
 }
