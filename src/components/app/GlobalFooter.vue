@@ -46,7 +46,6 @@ footer {
 
     width: 100%;
 
-    background: black;
     font-size: 0.68rem;
 }
 
