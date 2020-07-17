@@ -12,6 +12,7 @@ const defaults = {
     },
     desc: {
         margin: 0,
+        color: '#879',
     },
 }
 
@@ -30,6 +31,10 @@ export default {
         name: {
             ...defaults.name,
             color: 'blue',
+        },
+        desc: {
+            ...defaults.desc,
+            color: 'black',
         },
     },
 }
