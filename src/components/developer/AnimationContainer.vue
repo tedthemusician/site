@@ -14,6 +14,12 @@ export default {
             type: Number,
             default: 16 / 9,
         },
+        animationData: {
+            type: Object,
+            validator: function(data) {
+                return !!(data.width && data.height && data.renderFunc)
+            },
+        },
     },
     data: () => ({
         width: 0,
@@ -23,26 +29,25 @@ export default {
     computed: {
         wrapperStyle() {
             return {
-                width: `calc(${this.width}rem - 1rem)`,
-                height: `calc(${this.height}rem - 1rem)`,
+                width: `calc(${this.width}rem - 4rem)`,
+                height: `calc(${this.height}rem - 4rem)`,
                 background: this.color,
             }
         },
     },
     methods: {
         onResize() {
-            const { offsetWidth, offsetHeight } = this.$parent.$el
-            const parentWidth = pxToRem(offsetWidth)
-            const parentHeight = pxToRem(offsetHeight)
-            const defaultWidth = Math.min(parentWidth, maxWidth)
+            const windowWidth = pxToRem(window.innerWidth)
+            const windowHeight = pxToRem(window.innerHeight)
+            const defaultWidth = Math.min(windowWidth, maxWidth)
             const defaultHeight = defaultWidth / this.aspectRatio
-            if (defaultHeight <= parentHeight) {
+            if (defaultHeight <= windowHeight) {
                 this.width = defaultWidth
                 this.height = defaultHeight
             } else {
-                const widthByParentHeight = parentHeight * this.aspectRatio
-                this.width = widthByParentHeight
-                this.height = parentHeight
+                const widthByWindowHeight = windowHeight * this.aspectRatio
+                this.width = widthByWindowHeight
+                this.height = windowHeight
             }
         },
     },
