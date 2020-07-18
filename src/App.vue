@@ -74,7 +74,7 @@ body {
 }
 
 #router-view {
-    flex: auto;
+    margin-bottom: 2rem;
     padding: 0.5rem;
 }
 
