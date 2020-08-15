@@ -1,29 +1,8 @@
 <template>
-    <footer :style="footerStyle">
+    <footer>
         Copyright &copy; 2020 Ted Oliver
     </footer>
 </template>
-
-<script>
-import { mapActions } from 'vuex'
-
-export default {
-    computed: {
-        footerStyle() {
-            return this.$store.getters.getStyle('app', 'footer')
-        },
-    },
-    methods: {
-        ...mapActions({
-            setStoreTheme: 'setTheme',
-        }),
-        setTheme(theme) {
-            this.setStoreTheme(theme)
-            this.$root.$emit('set-theme', theme)
-        },
-    },
-}
-</script>
 
 <style scoped>
 footer {
@@ -34,5 +13,8 @@ footer {
 
     font-size: 0.68rem;
     text-align: center;
+
+    background: #2c2c38;
+    color: #706b71;
 }
 </style>

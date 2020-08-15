@@ -1,30 +1,18 @@
 <template>
-    <nav :style="barStyle">
-        <back-button v-if="theme !== 'greybeard'" @click.native="goBack" />
-        <a id="home-link" v-if="theme === 'greybeard'" @click="goHome">
-            Home
-        </a>
-        <home-button v-else @click.native="goHome" />
+    <nav>
+        <img :src="backButtonPath" @click="goBack" />
+        <img :src="homeButtonPath" @click="goHome" />
     </nav>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
-import HomeButton from './HomeButton.vue'
-import BackButton from './BackButton.vue'
-
 export default {
-    components: {
-        HomeButton,
-        BackButton,
-    },
     computed: {
-        ...mapState([
-            'theme',
-        ]),
-        barStyle() {
-            return this.$store.getters.getStyle('app', 'navBar')
+        backButtonPath() {
+            return require('@/assets/navBar/back.svg')
+        },
+        homeButtonPath() {
+            return require('@/assets/navBar/home.svg')
         },
     },
     methods: {
@@ -40,12 +28,23 @@ export default {
 
 <style scoped>
 nav {
-    position: fixed;
     top: 0;
+    position: fixed;
+    display: flex;
+    justify-content: left;
+    width: 100%;
+    height: 2rem;
+    background: #344250;
+    box-shadow: none;
+}
+
+img {
+    padding: 0.2rem;
+    width: 1.2rem;
+    fill: #788;
 }
 
 a {
     margin: 0.5rem;
-    color: blue;
 }
 </style>

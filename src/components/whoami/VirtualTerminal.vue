@@ -1,10 +1,10 @@
 <template>
-<main :style="windowStyle">
-    <div id="title-bar" :style="titleBarStyle">
+<main>
+    <div id="title-bar">
         <span id="title">PreTYY</span>
     </div>
-    <div id="screen" :style="screenStyle">
-        <pre :style="preStyle" v-html="content" />
+    <div id="screen">
+        <pre v-html="content" />
     </div>
 </main>
 </template>
@@ -45,26 +45,11 @@ export default {
         commands: parseText(fullText),
     }),
     computed: {
-        windowStyle() {
-            return this.getElementStyle('window')
-        },
-        titleBarStyle() {
-            return this.getElementStyle('titleBar')
-        },
-        screenStyle() {
-            return this.getElementStyle('screen')
-        },
-        preStyle() {
-            return this.getElementStyle('pre')
-        },
         content() {
             return `${this.text}&#10074;`
         },
     },
     methods: {
-        getElementStyle(element) {
-            return this.$store.getters.getStyle('whoami', element)
-        },
         displayNext(remainingCommands) {
             this.text += prompt
             if (remainingCommands.length) {
@@ -98,4 +83,42 @@ export default {
 </script>
 
 <style scoped>
+main {
+    margin: 0.5rem auto;
+    min-width: 4rem;
+    max-width: 97%;
+    min-height: 34rem;
+    background: #002b36;
+    border-radius: 0.2rem;
+    box-shadow: 0 0 0.3rem #111;
+    color: #839496;
+}
+
+#title-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 0.9rem;
+    background: #666;
+    border-top-left-radius: 0.2rem;
+    border-top-right-radius: 0.2rem;
+    font-size: 0.5rem;
+    color: #ccc;
+    vertical-align: middle;
+}
+
+#screen {
+    padding: 0.2rem 0.4rem 0.4rem 0.4rem;
+}
+
+pre {
+    margin: 0;
+    color: #657b83;
+    white-space: pre-wrap;
+    text-align: left;
+    font-family: Courier New, monospace;
+    font-size: 0.8rem;
+    font-weight: bold;
+}
 </style>

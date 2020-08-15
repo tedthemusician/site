@@ -1,12 +1,16 @@
 <template>
     <main>
         <textarea
-            :style="inputStyle"
+            :class="completionClass"
             v-model="typedContent"
             :placeholder="placeholder"
             rows="5"
         />
-        <div id="remaining-letters" :style="guideStyle" v-text="guideContent" />
+        <div
+            id="remaining-letters"
+            :class="completionClass"
+            v-text="guideContent"
+        />
     </main>
 </template>
 
@@ -39,20 +43,11 @@ export default {
         isPangram() {
             return !this.remainingLetters.length
         },
+        completionClass() {
+            return this.isPangram ? 'complete' : 'incomplete'
+        },
         guideContent() {
             return this.isPangram ? 'Pangram!' : this.remainingLetters.join('')
-        },
-        inputStyle() {
-            return this.getPangramStyle('input')
-        },
-        guideStyle() {
-            return this.getPangramStyle('guide')
-        },
-    },
-    methods: {
-        getPangramStyle(element) {
-            const status = this.isPangram ? 'complete' : 'incomplete'
-            return this.$store.getters.getStyle('pangram', status, element)
         },
     },
 }
@@ -64,16 +59,26 @@ textarea {
     width: 90%;
     border: 1px solid black;
     resize: none;
+    background: #756;
+    color: #ddd;
+}
+
+textarea.complete {
+    background: #676;
+    color: #ded;
 }
 
 textarea::placeholder {
-    color: #888;
+    color: #878;
 }
 
 #remaining-letters {
     font-size: 1rem;
-    /* font-family: 'Courier New', monospace; */
     font-weight: bold;
+}
+
+#remaining-letters.complete {
+    color: #8d8;
 }
 
 </style>

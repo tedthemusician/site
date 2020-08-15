@@ -1,14 +1,14 @@
 <template>
     <main>
         <div
-            :style="projectStyle"
+            class="project"
             v-for="project in projects"
             :key="project.id"
         >
             <router-link :to="project.path">
-                <h2 :style="nameStyle" v-text="project.name" />
+                <h2 v-text="project.name" />
             </router-link>
-            <summary :style="descStyle" v-text="project.desc" />
+            <summary v-text="project.desc" />
         </div>
     </main>
 </template>
@@ -54,25 +54,20 @@ export default {
             path: `/developer/${project.id}`,
         })),
     }),
-    computed: {
-        projectStyle() {
-            return this.getProjectStyle('project')
-        },
-        nameStyle() {
-            return this.getProjectStyle('name')
-        },
-        descStyle() {
-            return this.getProjectStyle('desc')
-        },
-    },
-    methods: {
-        getProjectStyle(element) {
-            return this.$store.getters.getStyle('developer', element)
-        },
-    },
 }
 </script>
 
 <style scoped>
+.project {
+    margin: 1rem;
+}
 
+h2 {
+    margin: 0;
+}
+
+summary {
+    margin: 0;
+    color: #879;
+}
 </style>

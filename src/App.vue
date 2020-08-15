@@ -1,5 +1,5 @@
 <template>
-    <div id="app" :style="rootStyle">
+    <div id="app">
         <nav-bar v-show="!isRootRoute" />
         <router-view id="router-view" :style="routerViewStyle" />
         <global-footer />
@@ -19,42 +19,11 @@ export default {
         isRootRoute() {
             return this.$route.path === '/'
         },
-        globalStyle() {
-            return this.getStyle('app', 'global')
-        },
-        linkStyle() {
-            const rules = this.getStyle('app', 'link')
-            const { normal } = rules
-            return {
-                '--link-normal-color': normal.color,
-                '--link-outline': normal.outline,
-                '--link-text-decoration': normal['text-decoration'],
-            }
-        },
-        rootStyle() {
-            return {
-                ...this.globalStyle,
-                ...this.linkStyle,
-            }
-        },
         routerViewStyle() {
             return {
                 'margin-top': this.isRootRoute ? 'none' : '2rem',
             }
         },
-    },
-    methods: {
-        getStyle(...keys) {
-            return this.$store.getters.getStyle(...keys)
-        },
-        setBodyBackground() {
-            const background = this.getStyle('app', 'body', 'background')
-            document.body.style.background = background
-        },
-    },
-    mounted() {
-        this.$root.$on('set-theme', this.setBodyBackground)
-        this.setBodyBackground()
     },
 }
 </script>
@@ -66,11 +35,16 @@ html {
 
 body {
     margin: 0;
+    background: linear-gradient(rgb(49, 28, 51), rgb(31, 22, 37) 60vh) fixed;
 }
 
 #app {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    color: rgb(192, 183, 195);
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 1rem;
+    text-align: center;
 }
 
 #router-view {
@@ -79,8 +53,8 @@ body {
 }
 
 a {
-    color: var(--link-normal-color);
-    outline: var(--link-outline);
-    text-decoration: var(--link-text-decoration);
+    /* TODO: color, visited, focus, hover, active */
+    outline: none;
+    text-decoration: none;
 }
 </style>
