@@ -1,39 +1,47 @@
 <template>
     <main :style="wrapperStyle" >
-        <div id="box" />
+        <canvas ref="canvas" :width="wrapperWidth" :height="wrapperHeight" />
     </main>
 </template>
 
 <script>
-import { pxToRem } from '@/utils.js'
+import { pxToRem, remToPx } from '@/utils.js'
 const maxWidth = 40
+const widthReduction = 4
+const heightReduction = 4
 
 export default {
     props: {
-        aspectRatio: {
+        width: {
             type: Number,
-            default: 16 / 9,
+            default: 16,
         },
-        animationData: {
-            type: Object,
-            validator: function(data) {
-                return !!(data.width && data.height && data.renderFunc)
-            },
+        height: {
+            type: Number,
+            default: 16,
+        },
+        play: {
+            type: Function,
+            required: true,
         },
     },
     data: () => ({
-        width: 0,
-        height: 0,
+        wrapperWidth: 0,
+        wrapperHeight: 0,
         color: 'yellow',
     }),
     computed: {
+        aspectRatio() {
+            return this.width / this.height
+        },
         wrapperStyle() {
             return {
-                width: `calc(${this.width}rem - 4rem)`,
-                height: `calc(${this.height}rem - 4rem)`,
+                width: `${this.wrapperWidth}px`,
+                height: `${this.wrapperHeight}px`,
                 background: this.color,
             }
         },
+
     },
     methods: {
         onResize() {
@@ -41,19 +49,30 @@ export default {
             const windowHeight = pxToRem(window.innerHeight)
             const defaultWidth = Math.min(windowWidth, maxWidth)
             const defaultHeight = defaultWidth / this.aspectRatio
+            let rawWidth
+            let rawHeight
             if (defaultHeight <= windowHeight) {
-                this.width = defaultWidth
-                this.height = defaultHeight
+                rawWidth = defaultWidth
+                rawHeight = defaultHeight
             } else {
                 const widthByWindowHeight = windowHeight * this.aspectRatio
-                this.width = widthByWindowHeight
-                this.height = windowHeight
+                rawWidth = widthByWindowHeight
+                rawHeight = windowHeight
             }
+            this.wrapperWidth = remToPx(rawWidth - widthReduction)
+            this.wrapperHeight = remToPx(rawHeight - heightReduction)
         },
     },
     mounted() {
         window.addEventListener('resize', this.onResize)
         this.onResize()
+        const canvas = this.$refs.canvas
+        const vcx = canvas.getContext('2d')
+        this.play({
+            vcx,
+            width: this.wrapperWidth,
+            height: this.wrapperHeight,
+        })
     },
     beforeDestroy() {
         window.removeEventListener('resize', this.onResize)
@@ -65,9 +84,9 @@ export default {
 main {
     margin: 0 auto;
 }
-#box {
+canvas {
     width: 100%;
     height: 100%;
-    background: red;
+    background: black;
 }
 </style>
