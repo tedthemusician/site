@@ -1,17 +1,6 @@
 <template>
     <footer :style="footerStyle">
-        <section id="copyright">
-            Copyright &copy; 2020 Ted Oliver
-        </section>
-        <section id="themes">
-            <a @click="setTheme('light')">light</a>
-            |
-            <a @click="setTheme('dark')">dark</a>
-            |
-            <a @click="setTheme('vintage')">vintage</a>
-            |
-            <a @click="setTheme('greybeard')">greybeard</a>
-        </section>
+        Copyright &copy; 2020 Ted Oliver
     </footer>
 </template>
 
@@ -41,23 +30,9 @@ footer {
     position: fixed;
     bottom: 0;
 
-    display: flex;
-    justify-content: space-between;
-
     width: 100%;
 
     font-size: 0.68rem;
-}
-
-section {
-    padding: 0.1rem 0.2rem 0.1rem 0.2rem;
-}
-
-#themes {
-    user-select: none;
-}
-
-a {
-    cursor: pointer;
+    text-align: center;
 }
 </style>
