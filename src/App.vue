@@ -53,7 +53,8 @@ body {
 }
 
 a {
-    /* TODO: color, visited, focus, hover, active */
+    /* TODO: visited, focus, hover, active */
+    color: #639db9;
     outline: none;
     text-decoration: none;
 }
