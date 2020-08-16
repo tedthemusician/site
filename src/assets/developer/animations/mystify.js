@@ -1,4 +1,7 @@
-export default function({ vcx: cx, cWidth, cHeight }) {
+const cWidth = 800
+const cHeight = 600
+
+function play({ vcx: cx }) {
     cx.fillStyle = 'black'
     cx.fillRect(0, 0, cWidth, cHeight)
 
@@ -82,7 +85,7 @@ export default function({ vcx: cx, cWidth, cHeight }) {
             this.trails = []
             this.vels = []
             const numTrails = 16
-            const vertices = [];
+            const vertices = []
             for (let i = 0; i < 4; i++) {
                 vertices.push({
                     x: Math.random() * cWidth,
@@ -98,7 +101,7 @@ export default function({ vcx: cx, cWidth, cHeight }) {
                 const trail = this.trails[i]
                 trail.init(vertices, this.color)
             }
-        }
+        },
     }
 
     const q1 = Object.create(Quadr)
@@ -120,3 +123,5 @@ export default function({ vcx: cx, cWidth, cHeight }) {
 
     render()
 }
+
+export default { width: cWidth, height: cHeight, play }

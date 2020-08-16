@@ -21,11 +21,6 @@ const projects = [
         desc: 'A tool for finding new pangrams',
     },
     {
-        id: 'dvd',
-        name: 'Evil DVD Screensaver',
-        desc: 'A DVD screensaver whose icon never quite hits the corner',
-    },
-    {
         id: 'mystify',
         name: 'Mystify Your Mind',
         desc: 'A bit of Windows 95 nostalgia',

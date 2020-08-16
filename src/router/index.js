@@ -2,11 +2,13 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 
 import Developer from '@/views/developer/Developer.vue'
-import DVD from '@/views/developer/DVD.vue'
 import Home from '@/views/Home.vue'
 import Musician from '@/views/musician/Musician.vue'
 import Pangram from '@/views/developer/Pangram.vue'
+import Mystify from '@/views/developer/Mystify.vue'
 import Whoami from '@/views/Whoami.vue'
+
+import Test from '@/views/Test.vue'
 
 Vue.use(VueRouter)
 
@@ -32,14 +34,19 @@ const routes = [
         component: Pangram,
     },
     {
-        path: '/developer/dvd',
-        name: 'DVD Menu',
-        component: DVD,
+        path: '/developer/mystify',
+        name: 'Mystify Your Mind',
+        component: Mystify,
     },
     {
         path: '/whoami',
         name: 'Whoami',
         component: Whoami,
+    },
+    {
+        path: '/test',
+        name: 'Test',
+        component: Test,
     },
 ]
 

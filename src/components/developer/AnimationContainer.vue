@@ -1,6 +1,6 @@
 <template>
     <main :style="wrapperStyle" >
-        <canvas ref="canvas" :width="wrapperWidth" :height="wrapperHeight" />
+        <canvas ref="canvas" />
     </main>
 </template>
 
@@ -12,25 +12,29 @@ const heightReduction = 4
 
 export default {
     props: {
-        width: {
-            type: Number,
-            default: 16,
-        },
-        height: {
-            type: Number,
-            default: 16,
-        },
-        play: {
-            type: Function,
+        animation: {
+            type: Object,
             required: true,
+            validator(anim) {
+                const { width, height, play } = anim
+                return !!(width && height && play)
+            },
         },
     },
     data: () => ({
         wrapperWidth: 0,
         wrapperHeight: 0,
-        color: 'yellow',
     }),
     computed: {
+        width() {
+            return this.animation.width
+        },
+        height() {
+            return this.animation.height
+        },
+        play() {
+            return this.animation.play
+        },
         aspectRatio() {
             return this.width / this.height
         },
@@ -67,11 +71,13 @@ export default {
         window.addEventListener('resize', this.onResize)
         this.onResize()
         const canvas = this.$refs.canvas
+        canvas.width = this.width
+        canvas.height = this.height
         const vcx = canvas.getContext('2d')
         this.play({
             vcx,
-            width: this.wrapperWidth,
-            height: this.wrapperHeight,
+            cWidth: this.width,
+            cHeight: this.height,
         })
     },
     beforeDestroy() {
