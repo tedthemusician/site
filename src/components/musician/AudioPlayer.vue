@@ -39,11 +39,11 @@ export default {
 h2 {
     margin: 0 0 0.25rem 0;
     font-weight: normal;
-    font-size: 1.15rem;
+    font-size: 1rem;
 }
 
 audio {
-    margin-bottom: 0.75rem;
+    margin-bottom: 1rem;
     width: 100%;
     height: 1.5rem;
 }
