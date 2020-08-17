@@ -78,7 +78,7 @@ export default [
                 basename: 'youtube',
             },
             {
-                title: 'Every Synthwave Jame',
+                title: 'Every Synthwave Jam',
                 basename: 'synthwave',
             },
             {
