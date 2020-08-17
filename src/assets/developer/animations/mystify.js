@@ -1,6 +1,8 @@
 const cWidth = 800
 const cHeight = 600
 
+import { randInt } from '@/utils.js'
+
 function play({ vcx: cx }) {
     cx.fillStyle = 'black'
     cx.fillRect(0, 0, cWidth, cHeight)
@@ -104,10 +106,23 @@ function play({ vcx: cx }) {
         },
     }
 
+    const colors = [
+        'red',
+        'yellow',
+        'orange',
+        'green',
+        'turquoise',
+        'blue',
+        'purple',
+    ]
+
+    const color1 = colors[randInt(0, colors.length - 1)]
+    const color2 = colors.filter(c => c !== color1)[randInt(0, colors.length - 2)]
+
     const q1 = Object.create(Quadr)
-    q1.init('green')
+    q1.init(color1)
     const q2 = Object.create(Quadr)
-    q2.init('red')
+    q2.init(color2)
 
     function render() {
         cx.fillStyle = 'black'
