@@ -26,6 +26,11 @@ const projects = [
         desc: 'A bit of Windows 95 nostalgia',
     },
     {
+        id: 'julia',
+        name: 'Julia Sets',
+        desc: 'Explore Julia sets by changing function constants',
+    },
+    {
         id: 'deepnote',
         name: 'Deep Note',
         desc: 'A visualization of a familiar sound',
@@ -34,11 +39,6 @@ const projects = [
         id: 'life',
         name: 'Life',
         desc: "Conway's Game of Life",
-    },
-    {
-        id: 'julia',
-        name: 'Julia Sets',
-        desc: 'Explore Julia sets by changing function constants',
     },
 ]
 
