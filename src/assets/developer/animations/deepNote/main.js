@@ -2,7 +2,7 @@ import Voice from './voice.js'
 import { measureDur } from './constants.js'
 import render from './visualizer.js'
 
-export default function({ vcx, acx, cWidth, cHeight }) {
+function play({ vcx, acx, cWidth, cHeight }) {
     const notes = [
         {pitch: 26, unison: 1},
         {pitch: 38, unison: 2},

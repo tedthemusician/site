@@ -5,7 +5,7 @@
 </template>
 
 <script>
-import { pxToRem, remToPx } from '@/utils.js'
+import { pxToRem } from '@/utils.js'
 const maxWidth = 40
 const widthReduction = 4
 const heightReduction = 4
@@ -40,9 +40,8 @@ export default {
         },
         wrapperStyle() {
             return {
-                width: `${this.wrapperWidth}px`,
-                height: `${this.wrapperHeight}px`,
-                background: this.color,
+                width: `${this.wrapperWidth}rem`,
+                height: `${this.wrapperHeight}rem`,
             }
         },
 
@@ -63,8 +62,8 @@ export default {
                 rawWidth = widthByWindowHeight
                 rawHeight = windowHeight
             }
-            this.wrapperWidth = remToPx(rawWidth - widthReduction)
-            this.wrapperHeight = remToPx(rawHeight - heightReduction)
+            this.wrapperWidth = rawWidth - widthReduction
+            this.wrapperHeight = rawHeight - heightReduction
         },
     },
     mounted() {
