@@ -1,10 +1,5 @@
-Music showcase
-
 DEV
-    DVD icon text size
-    Mystify
+    Mystify frame rate
     Deep Note
-    Life
-    Julia
 
 whoami links
