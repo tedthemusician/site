@@ -86,7 +86,8 @@ export default {
 main {
     margin: 0.5rem auto;
     min-width: 4rem;
-    max-width: 97%;
+    width: 97%;
+    max-width: 35rem;
     min-height: 34rem;
     background: #002b36;
     border-radius: 0.2rem;

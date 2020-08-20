@@ -57,6 +57,7 @@ export default {
 textarea {
     margin: 1rem;
     width: 90%;
+    max-width: 40rem;
     border: 1px solid black;
     resize: none;
     background: #756;
