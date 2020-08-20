@@ -10,9 +10,6 @@ export default {
     }),
     computed: {
         aspectRatio() {
-            if (!this.canvasWidth || !this.canvasHeight) {
-                console.error('canvasWidth and canvasHeight are required')
-            }
             return this.canvasWidth / this.canvasHeight
         },
         canvasStyle() {
@@ -35,9 +32,6 @@ export default {
         window.addEventListener('resize', this.computeLayout)
         this.computeLayout()
         const { canvas } = this.$refs
-        if (!canvas) {
-            console.error('Canvas ref is required')
-        }
         canvas.width = this.canvasWidth
         canvas.height = this.canvasHeight
     },
