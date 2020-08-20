@@ -52,29 +52,27 @@
 </template>
 
 <script>
+import AutosizeCanvas from '@/mixins/AutosizeCanvas.js'
 import animationData from '@/assets/developer/animations/julia/main.js'
-import { pxToRem, remToPx } from '@/utils.js'
-
-const maxWidth = 40
 
 const {
-    width,
-    height,
+    canvasWidth,
+    canvasHeight,
     render,
     changeReal,
     changeImaginary,
 } = animationData
 
-const aspectRatio = width / height
-
 export default {
+    mixins: [
+        AutosizeCanvas,
+    ],
     data: () => ({
+        canvasWidth,
+        canvasHeight,
         cx: null,
         real: 0,
         imaginary: 0,
-        wrapperWidth: 0,
-        wrapperHeight: 0,
-        aspectRatio,
     }),
     computed: {
         realSign() {
@@ -89,12 +87,6 @@ export default {
         imaginaryText() {
             return Math.abs(this.imaginary) / 100
         },
-        canvasStyle() {
-            return {
-                width: `${this.wrapperWidth}px`,
-                height: `${this.wrapperHeight}px`,
-            }
-        },
     },
     methods: {
         changeReal(event) {
@@ -103,25 +95,10 @@ export default {
         changeImaginary(event) {
             window.setTimeout(() => changeImaginary(this.cx, event), 0)
         },
-        computeLayout() {
-            const windowWidth = pxToRem(window.innerWidth)
-            const width = Math.min(windowWidth, maxWidth)
-            const height = width / this.aspectRatio
-            this.wrapperWidth = remToPx(width - 1)
-            this.wrapperHeight = remToPx(height - 1)
-        },
     },
     mounted() {
-        window.addEventListener('resize', this.computeLayout)
-        this.computeLayout()
-        const { canvas } = this.$refs
-        canvas.width = width
-        canvas.height = height
-        this.cx = canvas.getContext('2d')
+        this.cx = this.$refs.canvas.getContext('2d')
         render(this.cx)
-    },
-    beforeDestroy() {
-        window.removeEventListener('resize', this.computeLayout)
     },
 }
 </script>

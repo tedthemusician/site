@@ -16,7 +16,6 @@ function getCurrentInterval() {
 }
 
 let currentGrid = initialGrid
-window.grid = currentGrid
 
 function makeGrid() {
     const cells = []
@@ -40,7 +39,19 @@ function changeEachCell(oldCells, callback) {
 
 export function setGridSize(newNumDivisions) {
     const difference = newNumDivisions - numDivisions
-    numDivisions += difference
+    if (difference > 0) {
+        const rowAugmentation = Array(difference).fill(0)
+        currentGrid = currentGrid.map(row => [...row, ...rowAugmentation])
+        for (let i = 0; i < difference; i++) {
+            const newRow = Array(newNumDivisions).fill(0)
+            currentGrid.push(newRow)
+        }
+    } else if (difference < 0) {
+        currentGrid = currentGrid
+            .slice(0, newNumDivisions)
+            .map(row => row.slice(0, newNumDivisions))
+    }
+    numDivisions = newNumDivisions
 }
 
 function setCell(col, row, val) {
@@ -115,10 +126,13 @@ export function render({ canvas, cx }) {
     const getCellWidth = () => cSideLength / numDivisions
     const getCellHeight = () => cSideLength / numDivisions
 
-    const canvasToCell = (x, y) => ({
-        col: ((x / cSideLength)  * numDivisions) | 0,
-        row: ((y / cSideLength) * numDivisions) | 0,
-    })
+    const canvasToCell = (x, y) => {
+        const { width, height } = canvas.style
+        return {
+            col: ((x / parseInt(width,  10)) * numDivisions) | 0,
+            row: ((y / parseInt(height, 10)) * numDivisions) | 0,
+        }
+    }
 
     const eventToCell = e => canvasToCell(e.offsetX, e.offsetY)
 

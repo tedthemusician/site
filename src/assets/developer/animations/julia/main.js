@@ -77,8 +77,8 @@ const changeReal = makeParamChanger('real')
 const changeImaginary = makeParamChanger('imaginary')
 
 export default {
-    width: cWidth,
-    height: cHeight,
+    canvasWidth: cWidth,
+    canvasHeight: cHeight,
     render,
     changeReal,
     changeImaginary,

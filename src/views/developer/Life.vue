@@ -56,7 +56,7 @@
 </template>
 
 <script>
-import { pxToRem, remToPx } from '@/utils.js'
+import AutosizeCanvas from '@/mixins/AutosizeCanvas.js'
 
 import {
     numIntervals,
@@ -77,9 +77,10 @@ import {
     setIsRunning,
 } from '@/assets/developer/animations/life/main.js'
 
-const maxWidth = 40
-
 export default {
+    mixins: [
+        AutosizeCanvas,
+    ],
     data: () => ({
         numIntervals,
         minDivisions,
@@ -88,18 +89,15 @@ export default {
         speed: initialSpeed,
         numDivisions: initialNumDivisions,
         minSpeed: 0,
-        wrapperWidth: 0,
-        wrapperHeight: 0,
+        canvasWidth: sideLength,
+        canvasHeight: sideLength,
     }),
     computed: {
         maxSpeed() {
             return this.numIntervals - 1
         },
-        canvasStyle() {
-            return {
-                width: `${this.wrapperWidth}px`,
-                height: `${this.wrapperHeight}px`,
-            }
+        aspectRatio() {
+            return this.canvasWidth / this.canvasHeight
         },
     },
     methods: {
@@ -134,27 +132,14 @@ export default {
             setIsRunning(newState)
             this.isRunning = newState
         },
-        computeLayout() {
-            const windowWidth = pxToRem(window.innerWidth)
-            const widthAndHeight = Math.min(windowWidth, maxWidth)
-            this.wrapperWidth = remToPx(widthAndHeight - 1)
-            this.wrapperHeight = remToPx(widthAndHeight - 1)
-        },
     },
     mounted() {
-        window.addEventListener('resize', this.computeLayout)
-        this.computeLayout()
-        const canvas = this.$refs.canvas
-        canvas.width = sideLength
-        canvas.height = sideLength
+        const { canvas } = this.$refs
         const cx = canvas.getContext('2d')
         render({
             canvas,
             cx,
         })
-    },
-    beforeDestroy() {
-        window.removeEventListener('resize', this.computeLayout)
     },
 }
 </script>
@@ -210,6 +195,7 @@ button:disabled {
     background: rgb(85, 78, 68);
     font-weight: bold;
     border-radius: 0.25rem;
+    user-select: none;
 }
 
 #speed input {
