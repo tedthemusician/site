@@ -42,11 +42,19 @@ const prompt = '/home/ted $ '
 export default {
     data: () => ({
         text: '',
-        commands: parseText(fullText),
     }),
     computed: {
         content() {
             return `${this.text}&#10074;`
+        },
+        viewerLink() {
+            const url = require('@/assets/whoami/viewer.png')
+            return `<a href="${url}" target="_blank">medical image viewer</a>`
+        },
+        commands() {
+            const fullTextWithViewerLink = fullText
+                .replace('[viewer-link]', this.viewerLink)
+            return parseText(fullTextWithViewerLink)
         },
     },
     methods: {
