@@ -1,23 +1,19 @@
 import Voice from './voice.js'
-import { measureDur } from './constants.js'
+import { notes, measureDur } from './constants.js'
 import render from './visualizer.js'
 
-function play({ vcx, acx, cWidth, cHeight }) {
-    const notes = [
-        {pitch: 26, unison: 1},
-        {pitch: 38, unison: 2},
-        {pitch: 50, unison: 3},
-        {pitch: 57, unison: 3},
-        {pitch: 62, unison: 3},
-        {pitch: 69, unison: 3},
-        {pitch: 74, unison: 3},
-        {pitch: 78, unison: 3},
-        {pitch: 81, unison: 3},
-        {pitch: 86, unison: 3},
-        {pitch: 90, unison: 3},
-        {pitch: 93, unison: 3},
-    ]
+let isPlaying = false
 
+export function play() {
+    isPlaying = true
+}
+
+export function pause() {
+    isPlaying = false
+}
+
+export function start({ vcx, acx }) {
+    isPlaying = true
     const gainEnv = [0, 0.5, 1, 1, 0]
 
     const masterGain = acx.createGain()
@@ -35,8 +31,10 @@ function play({ vcx, acx, cWidth, cHeight }) {
     }
 
     function draw() {
-        const visualVoices = voices.flatMap(voice => voice.getFreqs())
-        render(vcx, cWidth, cHeight, visualVoices, masterGain.gain.value)
+        if (isPlaying) {
+            const visualVoices = voices.flatMap(voice => voice.getFreqs())
+            render(vcx, visualVoices, masterGain.gain.value)
+        }
         window.requestAnimationFrame(draw)
     }
 

@@ -1,23 +1,24 @@
 import dot from './dot.js'
 import drawPiano from './piano.js'
+import { cWidth, cHeight } from './constants.js'
 
-function clearCanvas(vcx, cWidth, cHeight) {
+function clearCanvas(vcx) {
     vcx.clearRect(0, 0, cWidth, cHeight)
     vcx.fillStyle = '#658'
     vcx.fillRect(0, 0, cWidth, cHeight)
 }
 
-function drawVoices(vcx, cWidth, cHeight, voices, amp) {
+function drawVoices(vcx, voices, amp) {
     voices.forEach(freq => {
-        Object.create(dot).drawFreq(vcx, cWidth, cHeight, freq, amp)
+        Object.create(dot).drawFreq(vcx, freq, amp)
     })
 }
 
-export default function render(vcx, cWidth, cHeight, voices, amp) {
+export default function render(vcx, voices = [], amp = 0) {
     clearCanvas(vcx, cWidth, cHeight)
-    drawPiano(vcx, cWidth, cHeight)
+    drawPiano(vcx)
     vcx.fillStyle = '#ffe'
     vcx.lineWidth = 0.5
     vcx.strokeStyle = '#ee7'
-    drawVoices(vcx, cWidth, cHeight, voices, amp)
+    drawVoices(vcx, voices, amp)
 }

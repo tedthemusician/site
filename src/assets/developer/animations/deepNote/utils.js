@@ -1,4 +1,4 @@
-import { minNote, maxNote } from './constants.js'
+import { cWidth, minNote, maxNote } from './constants.js'
 
 export function randRange(lo, hi) {
     return (Math.random() * (hi - lo)) + lo
@@ -6,7 +6,7 @@ export function randRange(lo, hi) {
 
 export function genRandomTargets(lo, hi, minDur, maxDur, totalDur) {
     const points = []
-    let offset = 0;
+    let offset = 0
     while (offset < totalDur) {
         points.push({
             value: randRange(lo, hi),
@@ -26,7 +26,7 @@ function ftom(f) {
     return 69 + (12 * (Math.log2(f / 440)))
 }
 
-export function freqToCanvas(cWidth, freq) {
+export function freqToCanvas(freq) {
     const numNotes = maxNote - minNote
     const noteOffset = cWidth / numNotes
     const minX = noteOffset

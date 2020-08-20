@@ -24,9 +24,9 @@ export default function Synth(acx, userSpec) {
 
     const panPositions = distribution(unison)
 
-    let carriers = [];
-    let modulators = [];
-    let playables = [];
+    let carriers = []
+    let modulators = []
+    let playables = []
 
     const filter = acx.createBiquadFilter()
     filter.Q.value = -1

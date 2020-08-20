@@ -1,3 +1,5 @@
+import { cWidth, cHeight } from './constants.js'
+
 const numOctaves = 6
 const flats = [1, 2, 4, 5, 6]
 
@@ -33,7 +35,7 @@ function drawOctave(vcx, whiteWidth, whiteHeight, octave) {
     drawBlackKeys(vcx, whiteWidth, whiteHeight, octave)
 }
 
-export default function drawPiano(vcx, cWidth, cHeight) {
+export default function drawPiano(vcx) {
     const whiteWidth = cWidth / (numOctaves * 7)
     const whiteHeight = (cHeight * 3) / 5
     for (let i = 0; i <= numOctaves; i++) {

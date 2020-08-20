@@ -7,6 +7,7 @@ import Musician from '@/views/musician/Musician.vue'
 import Pangram from '@/views/developer/Pangram.vue'
 import Mystify from '@/views/developer/Mystify.vue'
 import Julia from '@/views/developer/Julia.vue'
+import DeepNote from '@/views/developer/DeepNote.vue'
 import Life from '@/views/developer/Life.vue'
 import Whoami from '@/views/Whoami.vue'
 
@@ -44,6 +45,11 @@ const routes = [
         path: '/developer/julia',
         name: 'Julia Sets',
         component: Julia,
+    },
+    {
+        path: '/developer/deepNote',
+        name: 'Deep Note',
+        component: DeepNote,
     },
     {
         path: '/developer/life',
