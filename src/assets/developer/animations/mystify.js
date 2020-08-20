@@ -124,19 +124,25 @@ function play({ vcx: cx }) {
     const q2 = Object.create(Quadr)
     q2.init(color2)
 
-    function render() {
-        cx.fillStyle = 'black'
-        cx.fillRect(0, 0, cWidth, cHeight)
+    let lastTimestamp = 0
 
-        q1.draw()
-        q1.update()
-        q2.draw()
-        q2.update()
+    function render(timestamp) {
+        const dt = timestamp - lastTimestamp
+        if (dt > 51) {
+            lastTimestamp = timestamp
+            cx.fillStyle = 'black'
+            cx.fillRect(0, 0, cWidth, cHeight)
 
+            q1.draw()
+            q1.update()
+            q2.draw()
+            q2.update()
+
+        }
         window.requestAnimationFrame(render)
     }
 
-    render()
+    window.requestAnimationFrame(render)
 }
 
 export default { width: cWidth, height: cHeight, play }
