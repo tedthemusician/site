@@ -73,6 +73,11 @@ function makeParamChanger(param) {
     }
 }
 
+function reset() {
+    params.real = 0
+    params.imaginary = 0
+}
+
 const changeReal = makeParamChanger('real')
 const changeImaginary = makeParamChanger('imaginary')
 
@@ -80,6 +85,7 @@ export default {
     canvasWidth: cWidth,
     canvasHeight: cHeight,
     render,
+    reset,
     changeReal,
     changeImaginary,
 }

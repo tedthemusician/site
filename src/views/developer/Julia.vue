@@ -59,6 +59,7 @@ const {
     canvasWidth,
     canvasHeight,
     render,
+    reset,
     changeReal,
     changeImaginary,
 } = animationData
@@ -98,6 +99,7 @@ export default {
     },
     mounted() {
         this.cx = this.$refs.canvas.getContext('2d')
+        reset()
         render(this.cx)
     },
 }
