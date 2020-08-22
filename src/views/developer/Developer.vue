@@ -2,7 +2,7 @@
     <main>
         <div
             class="project"
-            v-for="project in projects"
+            v-for="project in shownProjects"
             :key="project.id"
         >
             <router-link :to="project.path">
@@ -34,6 +34,7 @@ const projects = [
         id: 'deepnote',
         name: 'Deep Note',
         desc: 'A visualization of a familiar sound',
+        requirements: [window.AudioContext],
     },
     {
         id: 'life',
@@ -49,6 +50,16 @@ export default {
             path: `/developer/${project.id}`,
         })),
     }),
+    computed: {
+        shownProjects() {
+            return this.projects.filter(project => {
+                if (project.requirements) {
+                    return project.requirements.every(requirement => !!requirement)
+                }
+                return true
+            })
+        },
+    },
 }
 </script>
 
