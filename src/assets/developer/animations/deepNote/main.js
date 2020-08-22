@@ -14,7 +14,7 @@ export function pause() {
 
 export function start({ vcx, acx }) {
     isPlaying = true
-    const gainEnv = [0, 0.5, 1, 1, 0]
+    const gainEnv = new Float32Array([0.0001, 0.5, 1, 1, 0.0001])
 
     const masterGain = acx.createGain()
     masterGain.gain.value = 0

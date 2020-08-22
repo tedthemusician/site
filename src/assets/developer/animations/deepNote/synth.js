@@ -38,7 +38,12 @@ export default function Synth(acx, userSpec) {
 
     function init() {
         panPositions.forEach(panPosition => {
-            const panner = new PannerNode(acx, {positionX: panPosition})
+            const panner = acx.createPanner()
+            if (panner.positionX) {
+                panner.positionX.setValueAtTime(panPosition, acx.currentTime)
+            } else {
+                panner.setPosition(panPosition, 0, 0)
+            }
             panner.connect(gain)
             const carrier = createOsc(acx, freq, panner)
             carriers.push(carrier)
