@@ -1,25 +1,32 @@
 <template>
-    <main>
-        <div id="headers" class="row">
-            <div
-                class="cell"
-                v-for="header in formattedHeaders"
-                :key="header.key"
-                @click="handleHeaderClick(header.key)"
-                v-html="header.label"
-            />
+    <div>
+        <main>
+            <div id="headers" class="row">
+                <div
+                    class="cell"
+                    v-for="header in formattedHeaders"
+                    :key="header.key"
+                    @click="handleHeaderClick(header.key)"
+                    v-html="header.label"
+                />
+            </div>
+            <div class="row" v-for="state in formattedStates" :key="state.name">
+                <div class="cell" v-text="state.name" />
+                <div class="cell" v-text="state.south" />
+                <div class="cell" v-text="state.north" />
+                <div class="cell" v-text="state.west" />
+                <div class="cell" v-text="state.east" />
+                <div class="cell" v-text="state.height" />
+                <div class="cell" v-text="state.width" />
+                <div class="cell" v-text="state.elongation" />
+            </div>
+        </main>
+        <div id="github-link">
+            <a href="https://github.com/tedthemusician/states" target="_blank">
+                How was this calculated?
+            </a>
         </div>
-        <div class="row" v-for="state in formattedStates" :key="state.name">
-            <div class="cell" v-text="state.name" />
-            <div class="cell" v-text="state.south" />
-            <div class="cell" v-text="state.north" />
-            <div class="cell" v-text="state.west" />
-            <div class="cell" v-text="state.east" />
-            <div class="cell" v-text="state.height" />
-            <div class="cell" v-text="state.width" />
-            <div class="cell" v-text="state.elongation" />
-        </div>
-    </main>
+    </div>
 </template>
 
 <script>
@@ -112,5 +119,9 @@ main {
     display: table-cell;
     padding: 0.35rem;
     border: 0.025rem solid rgb(98, 84, 112);
+}
+
+#github-link {
+    margin-top: 2rem;
 }
 </style>
