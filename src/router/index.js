@@ -5,6 +5,7 @@ import Developer from '@/views/developer/Developer.vue'
 import Home from '@/views/Home.vue'
 import Musician from '@/views/musician/Musician.vue'
 import Pangram from '@/views/developer/Pangram.vue'
+import States from '@/views/developer/States.vue'
 import Mystify from '@/views/developer/Mystify.vue'
 import Julia from '@/views/developer/Julia.vue'
 import DeepNote from '@/views/developer/DeepNote.vue'
@@ -35,6 +36,11 @@ const routes = [
         path: '/developer/pangram',
         name: 'Pangram',
         component: Pangram,
+    },
+    {
+        path: '/developer/states',
+        name: 'States',
+        component: States,
     },
     {
         path: '/developer/mystify',
