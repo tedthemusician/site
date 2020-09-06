@@ -110,7 +110,7 @@ main {
 
 .cell {
     display: table-cell;
-    padding: 0.25rem;
+    padding: 0.35rem;
     border: 0.025rem solid rgb(98, 84, 112);
 }
 </style>
