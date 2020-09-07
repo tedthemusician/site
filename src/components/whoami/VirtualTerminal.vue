@@ -1,5 +1,5 @@
 <template>
-<main>
+<main :style="mainStyle">
     <div id="title-bar">
         <span id="title">PreTYY</span>
     </div>
@@ -10,7 +10,7 @@
 </template>
 
 <script>
-import { randRange } from '@/utils.js'
+import { randRange, pxToRem } from '@/utils.js'
 import fullText from '@/assets/whoami/terminalText.txt'
 
 function parseText(rawText) {
@@ -33,6 +33,9 @@ function parseText(rawText) {
     return commands
 }
 
+const mainMinWidth = 4
+const mainMaxWidth = 35
+
 const commandTimeout = 1200
 const enterTimeout = 500
 const promptTimeout = 400
@@ -42,6 +45,7 @@ const prompt = '/home/ted $ '
 export default {
     data: () => ({
         text: '',
+        mainWidth: 35,
     }),
     computed: {
         content() {
@@ -55,6 +59,11 @@ export default {
             const fullTextWithViewerLink = fullText
                 .replace('[viewer-link]', this.viewerLink)
             return parseText(fullTextWithViewerLink)
+        },
+        mainStyle() {
+            return {
+                width: `${this.mainWidth}rem`,
+            }
         },
     },
     methods: {
@@ -83,9 +92,18 @@ export default {
                 }
             }, charTimeout)
         },
+        updateLayout() {
+            const width = pxToRem(window.innerWidth) * 0.97
+            this.mainWidth = Math.max(Math.min(width, mainMaxWidth), mainMinWidth)
+        },
     },
     mounted() {
+        window.addEventListener('resize', this.updateLayout)
+        this.updateLayout()
         this.displayNext(this.commands)
+    },
+    beforeDestroy() {
+        window.removeEventListener('resize', this.updateLayout)
     },
 }
 </script>
@@ -94,7 +112,6 @@ export default {
 main {
     margin: 0.5rem auto;
     min-width: 4rem;
-    width: 97%;
     max-width: 35rem;
     min-height: 34rem;
     background: #002b36;
@@ -126,7 +143,7 @@ pre {
     color: #657b83;
     white-space: pre-wrap;
     text-align: left;
-    font-family: Courier New, monospace;
+    font-family: 'Courier New', monospace;
     font-size: 0.8rem;
     font-weight: bold;
 }
