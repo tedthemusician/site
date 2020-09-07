@@ -21,6 +21,11 @@ const projects = [
         desc: 'A tool for finding new pangrams',
     },
     {
+        id: 'states',
+        name: 'US State dimensions',
+        desc: 'Which US states are widest? Tallest? Most elongated?',
+    },
+    {
         id: 'mystify',
         name: 'Mystify Your Mind',
         desc: 'A bit of Windows 95 nostalgia',
