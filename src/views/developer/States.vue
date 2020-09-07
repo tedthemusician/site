@@ -21,6 +21,11 @@
                 <div class="cell" v-text="state.elongation" />
             </div>
         </main>
+        <div id="explanation">
+            <p>Width is the difference between the westernmost and easternmost longitudes at the average latitude.</p>
+            <p>Height is the difference between the southernmost and northernmost latitudes at the average longitude.</p>
+            <p>Elongation is the proportion of width to height. In other words, if the state were inscribed in a rectangle, how stretched would that rectangle be?</p>
+        </div>
         <div id="github-link">
             <a href="https://github.com/tedthemusician/states" target="_blank">
                 How was this calculated?
@@ -119,6 +124,11 @@ main {
     display: table-cell;
     padding: 0.35rem;
     border: 0.025rem solid rgb(98, 84, 112);
+}
+
+#explanation {
+    margin: auto;
+    max-width: 35rem;
 }
 
 #github-link {
