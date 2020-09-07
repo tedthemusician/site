@@ -99,9 +99,11 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
 main {
+    margin: 1rem auto;
     display: table;
+    width: 45rem;
 }
 
 #headers {
