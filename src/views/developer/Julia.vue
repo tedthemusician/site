@@ -15,7 +15,7 @@
                             max="100"
                             value="0"
                             v-model="real"
-                            @change="changeReal"
+                            @input="changeReal"
                         />
                     </div>
                 </div>
@@ -28,7 +28,7 @@
                             max="100"
                             value="0"
                             v-model="imaginary"
-                            @change="changeImaginary"
+                            @input="changeImaginary"
                         />
                     </div>
                 </div>
